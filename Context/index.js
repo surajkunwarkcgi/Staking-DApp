@@ -108,7 +108,7 @@ export async function CONTRACT_DATA(address) {
 
       const totalDepositAmount = poolInfoArray.reduce((total, pool) => {
         return total + parseFloat(pool.depositedAmount);
-      });
+      }, 0);
 
       const rewardToken = await ERC20(REWARD_TOKEN, address);
       const depositToken = await ERC20(DEPOSIT_TOKEN, address);
@@ -329,7 +329,7 @@ export const addTokenMetamask = async (token) => {
     const tokenDecimals = await contract.decimals();
     const tokenAddress = await contract.address();
     const tokenSymbol = await contract.symbol();
-    const tokenImage = await TOKEN_LOGO;
+    const tokenImage = TOKEN_LOGO;
 
     try {
       const wasAdded = await window.ethereum.request({
